@@ -1,0 +1,838 @@
+---
+title: ClearForMe API Reference
+
+toc_footers:
+  - <a href='https://clearforme.com' target="_blank">Visit clearforme.com</a>
+  - <a href='mailto:partnerships@clearforme.com' target="_blank">Contact Partnership team</a>
+  - Copyright © by ClearForMe.
+  - All rights reserved.        
+  - <a href='https://github.com/slatedocs/slate' target="_blank">Documentation Powered by Slate</a>
+
+search: true
+
+code_clipboard: true
+---
+
+# Introduction
+
+**ClearForMe** manages the most comprehensive ingredient database on the market.
+We map every ingredient across your SKUs so your customers can easily find the right products in your store.
+
+# Authentication
+
+A **client name** and **token** are provided to your company when you start working with ClearForMe. We may also provide a staging token, depending on our service agreement. 
+
+# Ingredients
+
+## Get definition of ingredient
+
+This endpoint retieves the definition and attributes of an ingredient within a given product.
+
+> HTTP Request
+
+```http
+https://server.clearforme.com/api/app/ingredients/definition?sku=[xxx]&ingredientName=calcium carbonate&clientname=[xxx]
+```
+
+> Structure of JSON Response
+
+```json
+{
+    "definition": <string>,
+    "cfmIngredientAttributes": [
+        {
+          "attribute": <string>
+         },
+         .. and so on
+         ]
+}
+```
+
+> Sample JSON Response
+
+```json
+{
+    "definition": "An inorganic salt used as an abrasive (scrub), buffering (adjust ph), opacifying (milky/cream/translucent look), and as a bulking agent",
+    "cfmIngredientAttributes": [
+        {
+            "attribute": "Abrasive"
+        },
+        {
+            "attribute": "Absorbant"
+        }
+    ]
+}
+```
+
+### HTTP Request
+
+#### Identify product by SKU
+
+`GET https://server.clearforme.com/api/app/ingredients/definition?sku=[xxx]&ingredientName=[xxx]&clientname=[xxx]`
+
+#### Identify product by UPC
+
+`GET https://server.clearforme.com/api/app/ingredients/definition?upc=[xxx]&ingredientName=[xxx]&clientname=[xxx]`
+
+### Query Parameters
+
+Type | Authorisation Header | Values
+--------- | ------- | -----------
+HEAD | authToken | string
+
+Type | Parameter | Values
+--------- | ------- | -----------
+GET | ingredientName | string
+GET | clientname | string
+GET | sku | string
+GET | upc | string
+
+### Data descriptions
+
+Field Name | Description
+--------- | -------
+Definition | Definition associated with Ingredient Name.
+CFMIngredientAttributes | Array of attributes associated with the Ingredient.
+
+**Note:** CFMIngredientAttributes values are attributed to the ingredient in general and not necessarily for the Product’s Ingredients. Product-specific attributes are listed in the [Product Details API](#get-product-details-for-product), called Ingredient Attributes.
+
+### Error Responses
+
+Status | Response
+--------- | -------
+400 | `{"error":"No token was provided."}`
+403 | `{"error":"Failed to authenticate token."}`
+404 | `{"error":"ingredient not found."}`
+500 | `{"error":"Internal Server Error."}`
+
+# Products
+
+## Get Product Details for product
+
+> HTTP Request
+
+```http
+http://server.clearforme.com/api/app/products/details?sku=[xxx]&clientname=[xxx]
+```
+
+> Structure of JSON Response
+
+```json
+{
+    "productDetails": {
+        "upc": <string>,
+        "brand": <string>,
+        "productName": <string>,
+        "specialtyText": <string>,
+        "sku": <string>,
+        "handle": <string>,
+        "productAttributes": [
+            {
+                "attribute": <string>
+            },
+               .. and so on
+        ]
+    },
+    "productIngredients": [
+        {
+            "component": <string>,
+            "functionGroup": [
+                {
+                    "functionGroupName": <string>,
+                    "ingredients": [
+                        {
+                            "ingredientName": <string>,
+                            "ingredientAttributes": [
+                                {
+                                    "attribute": <string>
+                                },
+                                .. and so on
+                            ],
+                            "cfmIngredientAttributes": [
+                                {
+                                    "attribute": <string>
+                                },
+                                .. and so on
+                            ],
+                            "retailerNote": <string>
+                        },
+                        {
+                            "ingredientName": <string>,
+                            {
+                                    "attribute": <string>
+                                },
+                                .. and so on
+                            ],
+                            "cfmIngredientAttributes": [
+                                {
+                                    "attribute": <string>
+                                },
+                                .. and so on
+                            ],
+                            "retailerNote": <string>
+                        },
+                        .. and so on
+                    ]
+                }
+            ]
+        },
+        {
+            "component": <string>,
+            "functionGroup": [
+                {
+                    "functionGroupName": <string>,
+                    "ingredients": [
+                        {
+                            "ingredientName": <string>,
+                            "ingredientAttributes": [
+                                {
+                                    "attribute": <string>
+                                },
+                                .. and so on
+                            ],
+                            "cfmIngredientAttributes": [
+                                {
+                                    "attribute": <string>
+                                },
+                                .. and so on
+                            ],
+                            "retailerNote": <string>
+                        },
+                        {
+                            "ingredientName": <string>,
+                            {
+                                    "attribute": <string>
+                                },
+                                .. and so on
+                            ],
+                            "cfmIngredientAttributes": [
+                                {
+                                    "attribute": <string>
+                                },
+                                .. and so on
+                            ],
+                            "retailerNote": <string>
+                        },
+                        .. and so on
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+> Sample JSON Response
+
+```json
+{
+    "productDetails": {
+        "upc": "dir9259",
+        "brand": "dirtdonthurt",
+        "productName": "Charcoal Tooth Powder",
+        "specialtyText": "",
+        "sku": "xxx",
+        "handle": "charcoal-tooth-powder-hair-gel-cream",
+        "productAttributes": [
+            {
+                "attribute": "Fair trade"
+            },
+            {
+                "attribute": "Fragrance-free"
+            },
+            {
+                "attribute": "Gluten-free"
+            },
+            {
+                "attribute": "Vegan"
+            },
+            {
+                "attribute": "Cruelty-free"
+            }
+        ]
+    },
+    "productIngredients": [
+        {
+            "component": "Charcoal Tooth Powder",
+            "functionGroup": [
+                {
+                    "functionGroupName": "Complex",
+                    "ingredients": [
+                        {
+                            "ingredientName": "kaolin clay",
+                            "retailerNote": "This is a Retailer Note",
+                            "ingredientAttributes": [
+                                {
+                                    "attribute": "Mineral derived"
+                                },
+                                {
+                                    "attribute": "Wild harvested"
+                                }
+                            ],
+                            "cfmIngredientAttributes": []
+                        }
+                    ]
+                },
+                {
+                    "functionGroupName": "Inactive Ingredients",
+                    "ingredients": [
+                        {
+                            "ingredientName": "calcium carbonate",
+                            "ingredientAttributes": [
+                                {
+                                    "attribute": "Mineral derived"
+                                },
+                                {
+                                    "attribute": "Non-nano"
+                                }
+                            ],
+                            "cfmIngredientAttributes": [
+                                {
+                                    "attribute": "Abrasive"
+                                },
+                                {
+                                    "attribute": "Absorbant"
+                                }
+                            ],
+                            "retailerNote": ""
+                        },
+                        {
+                            "ingredientName": "coconut activated charcoal",
+                            "ingredientAttributes": [],
+                            "cfmIngredientAttributes": [],
+                            "retailerNote": ""
+                        },
+                        {
+                            "ingredientName": "clove",
+                            "ingredientAttributes": [],
+                            "cfmIngredientAttributes": [],
+                            "retailerNote": ""
+                        },
+                        {
+                            "ingredientName": "calcium bentonite clay",
+                            "ingredientAttributes": [],
+                            "cfmIngredientAttributes": [],
+                            "retailerNote": ""
+                        },
+                        {
+                            "ingredientName": "diatomaceous earth",
+                            "ingredientAttributes": [],
+                            "cfmIngredientAttributes": [],
+                            "retailerNote": ""
+                        },
+                        {
+                            "ingredientName": "turmeric",
+                            "ingredientAttributes": [],
+                            "cfmIngredientAttributes": [],
+                            "retailerNote": ""
+                        },
+                        {
+                            "ingredientName": "myrrh gum powder",
+                            "ingredientAttributes": [],
+                            "cfmIngredientAttributes": [],
+                            "retailerNote": ""
+                        },
+                        {
+                            "ingredientName": "sage",
+                            "ingredientAttributes": [],
+                            "cfmIngredientAttributes": [],
+                            "retailerNote": ""
+                        },
+                        {
+                            "ingredientName": "sodium bicarbonate",
+                            "ingredientAttributes": [],
+                            "cfmIngredientAttributes": [],
+                            "retailerNote": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "component": "Essential Oil Blend",
+            "functionGroup": [
+                {
+                    "functionGroupName": "Proprietary Blend",
+                    "ingredients": [
+                        {
+                            "ingredientName": "peppermint",
+                            "ingredientAttributes": [],
+                            "cfmIngredientAttributes": [],
+                            "retailerNote": ""
+                        },
+                        {
+                            "ingredientName": "wintergreen",
+                            "ingredientAttributes": [],
+                            "cfmIngredientAttributes": [],
+                            "retailerNote": ""
+                        },
+                        {
+                            "ingredientName": "spearmint",
+                            "ingredientAttributes": [],
+                            "cfmIngredientAttributes": [],
+                            "retailerNote": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+```
+
+Get all details in orderwise for a product, given its UPC or SKU.
+
+
+### HTTP Request
+
+#### Identify product by SKU
+
+`GET https://server.clearforme.com/api/app/products/details?sku=[xxx]&clientname=[xxx]`
+
+#### Identify product by UPC
+
+`GET https://server.clearforme.com/api/app/products/details?upc=[xxx]&clientname=[xxx]`
+
+### Query Parameters
+
+Type | Authorisation Header | Values
+--------- | ------- | -----------
+HEAD | authToken | string
+
+Type | Parameter | Values
+--------- | ------- | -----------
+GET | sku | string
+GET | upc | string
+GET | clientname | string
+
+### Data descriptions
+
+####upc
+UPC of product requested.
+
+####sku
+SKU of product requested.
+
+####brand
+Brand name of product requested.
+
+####productName
+Name of product requested.
+
+####specialtyText
+Long string. It contains details such as footer notes that can be displayed at the end of an ingredient widget.
+It may contain HTML formatting.
+
+####handle
+Handle of product requested. “n/a” if not provided.
+
+####ProductAttributes (group)
+A list of attributes pertaining to the product, such as:
+
+* Contains tree nuts
+* Cruelty-free
+* Fair trade
+* Fragrance-free
+* Gluten-free
+* IFRA standards compliant
+* Non-comedogenic
+* Vegan
+
+####ProductAttributes (group)
+The ingredients to be listed in order. 
+Ingredients are provided in a hierarchy to provide the optimal flexibility to display ingredients to customers.
+
+* Component
+    * Function Group
+        * Ingredients
+            * IngredientName
+            * IngredientAttributes
+            * CFMIngredientAttributes
+            * Retailer Note
+
+####Component (group)
+Each product can be grouped into one or more components.
+Components exist to allow for organization of multiple sets of ingredients within a product (think of make-up palettes or sample sets).
+
+####Function Group (group)
+Ingredients are grouped into seven sections called Function Groups. Function Groups can be empty if not applicable.
+The seven function groups are:
+
+* Active Ingredients
+* Inactive Ingredients (Default)
+* Disclosed Fragrance
+* Proprietary Blend
+* Complex
+* Tool
+* May Contain
+
+####IngredientAttributes (group)
+Within each Function Group are the Ingredients set and their attributes.
+
+* Ingredient Name
+* IngredientAttributes
+* CFMIngredientAttributes
+* Retailer Note
+
+####Ingredient Name
+The Ingredient Name
+
+####IngredientAttributes
+A list of attributes pertaining to that specific ingredient. Can be of the following:
+
+* Biodynamic
+* Constituents Of 100% essential oils
+* Essential oils
+* Mineral derived
+* Natural based preservative
+* Naturally derived fragrance
+* Non-GMO
+* Non-nano
+* Organic
+* Plant derived
+* Proprietary blend or complex
+* Synthetic
+* Wild crafted
+* Wild harvested
+* Natural fragrance
+
+####CFM IngredientAttributes 
+A list of attributes pertaining to that specific ingredient. Can be of the following:
+
+* Abrasive
+* Absorbent
+* Anticaking
+* Antifungal
+* Antimicrobial
+* Antioxidant
+* Astringent
+* Binding
+* Buffer agent
+* Bulking
+* Chelating agent
+* Colorant
+* Deodorant agent
+* Emulsion stabilizer
+* Film former
+* Flavoring agent
+* Fragrance 
+* Hair colorant
+* Hair conditioning
+* Hair fixative 
+* Humectant
+* Lytic agent
+* Opacifying agent
+* Oral care agent
+* PH adjusters
+* Preservatives
+* Skin protectant
+* Skin conditioning
+* Slip Modifier
+* Solvent
+* Surfactant
+* Viscosity agent
+
+####Retailer Note
+A note stored on CFM system pertaining to that specific ingredient for that specific product. (Available if included in subscribed service)
+
+### Error Responses
+
+Status | Response
+--------- | -------
+400 | `{"error":"No token was provided."}`
+403 | `{"error":"Failed to authenticate token."}`
+404 | `{"error":"product not found."}`
+500 | `{"error":"Internal Server Error."}`
+
+#Best Practices
+
+##Displaying Ingredients
+
+ClearForMe’s Ingredient List is very organized to give you complete control in displaying product ingredients in a way that empowers the customer to make decisions confidently.
+
+There are various ways you can display the information, such as:
+
+###Simple
+Display the ingredients in a simplistic short fashion.
+
+<%= image_tag "images/ingredients-1.png" %>
+
+###Sectioned
+Highlight specific sections to call out ingredients, such as Active Ingredients or Fragrance Ingredients
+
+<%= image_tag "images/ingredients-2.png" %>
+
+###Component
+Organize ingredient lists separately, so that products like Makeup Palettes with multiple shades can display each ingredient list separately if different.
+
+<%= image_tag "images/ingredients-3.png" %>
+
+We recommend setting up your Ingredient List template to display in the below format
+
+<%= image_tag "images/ingredient-list-a.png" %>
+
+<%= image_tag "images/ingredient-list-b.png" %>
+
+##Displaying Attributes
+When Product Details are requested for a SKU/UPC, a list of attributes are provided as part of the details. We recommend displaying it in the following fashion:
+
+###Product Attributes
+Create a space in your Ingredients section to display Product Attributes. These attributes describe the product, so a customer can easily tell that the product is, for example, vegan or gluten free.
+
+<%= image_tag "images/product-attributes-1.png" %>
+
+###Ingredient Attributes, CFMI Attributes and Retailer Notes
+When displaying the definitions of an ingredient, you may also want to display the attributes of that ingredient, such as whether it is organic, used as a solvent,  as well as any additional Retailer Notes you may wish to display regarding that ingredient for that product. 
+
+Create a space in your Definitions of Ingredients section to display those ingredient attributes, such as below image.
+
+<%= image_tag "images/product-attributes-2.png" %>
+
+##Error Handling
+When using APIs, it is possible that errors may occur. We recommend the below error handling practices to ensure a positive user experience when these errors are encountered.
+
+###Ingredient Not Found
+This occurs when the Ingredient requested is not found on our ClearForMe database. This could happen for a number of reasons, such as a typo in the request (the search requires an exact match).
+
+
+In this event, we recommend displaying a general user-friendly message, such as:
+“Ingredient’s definition was not found.”
+
+###Internal Server Error
+In the rare chance that there is a server error, this message may be returned. In this event, we recommend displaying a general user-friendly message, such as:
+
+“Oops! Something went wrong. Please try again later.”
+
+Alternatively, you can hide the Ingredient Section if the result yields an error.
+
+###Product Not Found
+This occurs when the product requested is not found on our ClearForMe database. This most likely occurs when the SKU or UPC requested did not result in a match on the ClearForMe database, either due to an error or because we have not yet added the product to our database yet.
+
+In this event, we recommend displaying a general user-friendly message, such as:
+
+“We are working on getting you the ingredient list. In the meantime, please contact us with any product inquiries you may have.”
+
+Alternatively, you can hide the Ingredient Section if the result yields an error.
+
+###ClearForMe will add more information shortly
+When we encounter new ingredient terms, it may take some time to research and provide a definition for the new ingredient encountered. In that event, this message will be provided when a definition is requested for the new term.
+
+###Other error messages or if API takes over 5 seconds to load and render
+We have designed our APIs and service to ensure optimal load time for ecommerce websites. Occasionally, the response time may take a long time for an unforeseen reason. To prevent the page from being in continual loading mode, we recommend inserting a time-limit of 5 to 7 seconds. After the threshold, a general user-friendly message can be displayed, such as:
+“We are experiencing a delay. To see information in this section, please reload the page or try again later.”
+
+Alternatively, you can hide the Ingredient Section if the result yields an error.
+
+#Sample Developer Code
+
+> React
+
+```jsx
+import React from 'react';
+import { FaRegTimesCircle } from 'react-icons/fa';
+
+/**
+ * @description This is an example source code of how to generate the UI for preview ingredients section.
+ * @param {Array<Object>} ingredientsData - product ingredient details.
+ * @param {String} clientName - registered client name.
+ */
+const PreviewIngredients = ({ ingredientsData, clientName }) => {
+  const previewBlockRef = React.useRef();
+  const [ingredientDetails, setIngredientsDetails] = React.useState(null);
+  const [ingredientClicked, setIngedientClicked] = React.useState(null);
+
+ /**
+   * @description populate ingredient details to render after an ingredient is clicked.
+   * @param {Object} ingredient - clicked ingredient details.
+   */
+  const handleIngredientClick = (ingredient) => {
+    if (!ingredient) return null;
+
+    //Check if the ingredient object has definition if not fetch it from the API endpoint.
+    if ('definition' in ingredient) {
+      const obj = {
+        ...ingredient,
+        productIngredientAttributes: ingredient.attributes || [],
+      };
+      return setIngedientClicked(obj);
+    } else {
+      return fetchSingleIngredientDetails(ingredient._id, activeIndex);
+    }
+  };
+
+ /**
+   * @description Service call to fetch an ingredient details when there is no definition/details available.
+   * @param {String} ingredientId
+   * API END POINT - https://server.clearforme.com/api/cms/productIngredients/{ingredientId}?clientName={registeredClientName}
+   * API Request Method - GET
+   */
+  const fetchSingleIngredientDetails = async (ingredientId, activeIndex) => {
+    const response = await API_ENDPOINT;
+    if(!response) return null;
+    const ingredientObj = {
+      _id: response.data.ingredientId,
+      title: response.data.ingredientName,
+      ...response.data,
+      ...(response.data.cfmIngredient
+        ? {
+            ...response.data.cfmIngredient,
+          }
+        : {}),
+    };
+    return setIngedientClicked(ingredientObj);
+  };
+
+ /**
+   * @description clear selected ingredient details from state
+   */
+  const removeClickedIngredient = () => setIngedientClicked(null);
+
+ /**
+   * @description handle component mounting behaviour
+   */
+  React.useEffect(() => {
+    if (previewBlockRef.current) {
+      previewBlockRef.current.scrollIntoView();
+    }
+  }, []);
+
+ /**
+   * @description handle component updating behaviour
+   */
+  React.useEffect(() => {
+    setIngredientsDetails(ingredientsData);
+  }, [ingredientsData]);
+
+  return (
+    <div ref={previewBlockRef} className='preview-ingredients'>
+      <div className='preview-title'>
+        <h4>All ingredients</h4>
+        <span>* click an ingredient for more info</span>
+      </div>
+
+      {
+        ingredientDetails && 
+        <ul>
+          {ingredientDetails.map((functionGroupData, parentIndex) => (
+            // component details
+            <li key={parentIndex} className='component'>
+              <div className='component-title inline-data'>
+                <span>Component:</span>
+                <span>{functionGroupData.title}</span>
+              </div>
+
+              {/* function group details */}
+              <ul className='function-group'>
+                {functionGroupData.children &&
+                  functionGroupData.children.map(
+                    (functionGroupItem, functionIndex) => (
+                      <li key={functionIndex}>
+                        <div className='function-group-title inline-data'>
+                          <span>Function Group:</span>
+                          <span>{functionGroupItem.title}</span>
+                        </div>
+
+                        {/* product ingredient details */}
+                        <div className='product-ingredients inline-data'>
+                          <span>Ingredients:</span>
+                          <ul className='ingredients-list'>
+                            {functionGroupItem.children &&
+                              functionGroupItem.children.map(
+                                (ingredientItem, childIndex) => (
+                                  <li key={childIndex}>
+                                    <span
+                                      onClick={() => handleIngredientClick(ingredientItem, ingredientItem.previewId)}
+                                      title={ingredientItem.title}
+                                      className={ingredientClicked && ingredientClicked._id === ingredientItem._id ? 'active' : ''}
+                                    >
+                                      {ingredientItem.title}
+                                    </span>
+                                    {ingredientClicked && ingredientClicked._id === ingredientItem._id ? (
+                                      <SelectedIngredient
+                                        ingredientDetails={ingredientClicked}
+                                        removeSelectedIngredient={removeClickedIngredient}
+                                      />
+                                    ) : null}
+                                  </li>
+                                )
+                              )}
+                          </ul>
+                        </div>
+                      </li>
+                    )
+                  )}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      }
+    </div>
+  );
+};
+
+export default PreviewIngredients;
+
+/**
+ * @description render Selected/Clicked ingredient details
+ * @param {Object} ingredientData - clicked ingredient details
+ * @param {Function} removeSelectedIngredient - removed selected ingredient state.
+ */
+const SelectedIngredient = ({ ingredientData, removeSelectedIngredient }) => {
+  return (
+    <div className='clicked-ingredient-details'>
+      <div className='top-details'>
+        <h5>{ingredientData.title}</h5>
+        <FaRegTimesCircle onClick={removeSelectedIngredient} className='close-preview-ingredient' />
+      </div>
+      <div className='bottom-details'>
+        <div className='definition inline-data'>
+          <span>Definition:</span>
+          <p>{ingredientData.definition}</p>
+        </div>
+
+        <div className='ingredient-attributes inline-data'>
+          <span>Product Ingredient Attributes:</span>
+          <ul>
+            {ingredientData.productIngredientAttributes
+              .filter(({ isActive }) => isActive)
+              .map(({ attribute, _id }) => (
+                <li key={_id}>{attribute}</li>
+              ))}
+          </ul>
+        </div>
+
+        <div className='cfm-ingredient-attributes inline-data'>
+          <span>CFM Ingredient Attributes:</span>
+          <ul>
+            {ingredientData.cfmIngredientAttributes
+              .filter(({ isActive }) => isActive)
+              .map(({ attribute, _id }) => (
+                <li key={_id}>{attribute}</li>
+              ))}
+          </ul>
+        </div>
+
+        {ingredientData.synonyms.length ? (
+          <div className='synonyms inline-data'>
+            <span>Synonyms:</span>
+            <ul>
+              {ingredientData.synonyms.map(({ synonym, _id }, index) => (
+                <li key={_id}>{synonym}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+};
+```
+
+As a guideline to support web developers, below is an example of how the API response can be rendered to display on your website. We recommend using this sample for guidance and reference purposes only and tested against various types of products in your store. Once a framework is agreed upon by your team, design and styling elements can be introduced.
+
+* **Sample Product:** Charcoal Tooth Powder
+    * **Ingredients:**
+        * Calcium Bentonite Clay, Coconut Activated Charcoal, Calcium Carbonate, Kaolin Clay, Diatomaceous Earth, Sodium Bicarbonate, Myrrh Gum Powder, Clove, Sage, Turmeric
+        * **Proprietary Blend:** Peppermint, Spearmint, Wintergreen
+
+<%= image_tag "images/sample.png" %>
