@@ -8,8 +8,9 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+  - <a href='https://clearforme.com' target="_blank">clearforme.com</a>
+  - <a href='https://clearforme.com/about-us#contact' target="_blank">Contact us for a Developer Key</a>
+  - <a href='https://github.com/slatedocs/slate' target="_blank">Documentation Powered by Slate</a>
 
 includes:
   - errors
