@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>ClearForMe API Reference</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -279,7 +279,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-13f24c39.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-e9bde216.js"></script>
 
@@ -288,7 +288,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -297,12 +297,6 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo-6f07a19a.png" class="logo" alt="" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
-        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -315,26 +309,44 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#ingredients" class="toc-h1 toc-link" data-title="Ingredients">Ingredients</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#get-definition-of-ingredient" class="toc-h2 toc-link" data-title="Get definition of ingredient">Get definition of ingredient</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#products" class="toc-h1 toc-link" data-title="Products">Products</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-product-details-for-product" class="toc-h2 toc-link" data-title="Get Product Details for product">Get Product Details for product</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#best-practices" class="toc-h1 toc-link" data-title="Best Practices">Best Practices</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#displaying-ingredients" class="toc-h2 toc-link" data-title="Displaying Ingredients">Displaying Ingredients</a>
+                  </li>
+                  <li>
+                    <a href="#displaying-attributes" class="toc-h2 toc-link" data-title="Displaying Attributes">Displaying Attributes</a>
+                  </li>
+                  <li>
+                    <a href="#error-handling" class="toc-h2 toc-link" data-title="Error Handling">Error Handling</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sample-developer-code" class="toc-h1 toc-link" data-title="Sample Developer Code">Sample Developer Code</a>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://clearforme.com' target="_blank">clearforme.com</a></li>
-            <li><a href='https://clearforme.com/about-us#contact' target="_blank">Contact us for a Developer Key</a></li>
+            <li><a href='https://clearforme.com' target="_blank">Visit clearforme.com</a></li>
+            <li><a href='mailto:partnerships@clearforme.com' target="_blank">Contact Partnership team</a></li>
+            <li>Copyright © by ClearForMe.</li>
+            <li>All rights reserved.</li>
             <li><a href='https://github.com/slatedocs/slate' target="_blank">Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -342,251 +354,888 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the CFM API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p><strong>ClearForMe</strong> manages the most comprehensive ingredient database on the market.
+We map every ingredient across your SKUs so your customers can easily find the right products in your store.</p>
 <h1 id='authentication'>Authentication</h1>
+<p>A <strong>client name</strong> and <strong>token</strong> are provided to your company when you start working with ClearForMe. We may also provide a staging token, depending on our service agreement. </p>
+<h1 id='ingredients'>Ingredients</h1><h2 id='get-definition-of-ingredient'>Get definition of ingredient</h2>
+<p>This endpoint retieves the definition and attributes of an ingredient within a given product.</p>
+
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>HTTP Request</p>
 </blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">https://server.clearforme.com/api/app/ingredients/definition?sku=[xxx]&amp;ingredientName=calcium carbonate&amp;clientname=[xxx]
 </span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
+<blockquote>
+<p>Structure of JSON Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"definition"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="err">..</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">so</span><span class="w"> </span><span class="err">on</span><span class="w">
+         </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"definition"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An inorganic salt used as an abrasive (scrub), buffering (adjust ph), opacifying (milky/cream/translucent look), and as a bulking agent"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abrasive"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Absorbant"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request'>HTTP Request</h3><h4 id='identify-product-by-sku'>Identify product by SKU</h4>
+<p><code>GET https://server.clearforme.com/api/app/ingredients/definition?sku=[xxx]&amp;ingredientName=[xxx]&amp;clientname=[xxx]</code></p>
+<h4 id='identify-product-by-upc'>Identify product by UPC</h4>
+<p><code>GET https://server.clearforme.com/api/app/ingredients/definition?upc=[xxx]&amp;ingredientName=[xxx]&amp;clientname=[xxx]</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
+<th>Type</th>
+<th>Authorisation Header</th>
+<th>Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>HEAD</td>
+<td>authToken</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Type</th>
 <th>Parameter</th>
-<th>Default</th>
+<th>Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GET</td>
+<td>ingredientName</td>
+<td>string</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>clientname</td>
+<td>string</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>sku</td>
+<td>string</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>upc</td>
+<td>string</td>
+</tr>
+</tbody></table>
+<h3 id='data-descriptions'>Data descriptions</h3>
+<table><thead>
+<tr>
+<th>Field Name</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>Definition</td>
+<td>Definition associated with Ingredient Name.</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>CFMIngredientAttributes</td>
+<td>Array of attributes associated with the Ingredient.</td>
 </tr>
 </tbody></table>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p><strong>Note:</strong> CFMIngredientAttributes values are attributed to the ingredient in general and not necessarily for the Product’s Ingredients. Product-specific attributes are listed in the <a href="#get-product-details-for-product">Product Details API</a>, called Ingredient Attributes.</p>
+<h3 id='error-responses'>Error Responses</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  <span class="nt">-X</span> DELETE
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Status</th>
+<th>Response</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td><code>{&quot;error&quot;:&quot;No token was provided.&quot;}</code></td>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td><code>{&quot;error&quot;:&quot;Failed to authenticate token.&quot;}</code></td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td><code>{&quot;error&quot;:&quot;ingredient not found.&quot;}</code></td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td><code>{&quot;error&quot;:&quot;Internal Server Error.&quot;}</code></td>
 </tr>
+</tbody></table>
+<h1 id='products'>Products</h1><h2 id='get-product-details-for-product'>Get Product Details for product</h2>
+<blockquote>
+<p>HTTP Request</p>
+</blockquote>
+<div class="highlight"><pre class="highlight http tab-http"><code><span class="err">http://server.clearforme.com/api/app/products/details?sku=[xxx]&amp;clientname=[xxx]
+</span></code></pre></div>
+<blockquote>
+<p>Structure of JSON Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"productDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"upc"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"productName"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"specialtyText"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sku"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"handle"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"productAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+               </span><span class="err">..</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">so</span><span class="w"> </span><span class="err">on</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"productIngredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"component"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"functionGroup"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"functionGroupName"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="err">..</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">so</span><span class="w"> </span><span class="err">on</span><span class="w">
+                            </span><span class="p">],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="err">..</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">so</span><span class="w"> </span><span class="err">on</span><span class="w">
+                            </span><span class="p">],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="err">..</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">so</span><span class="w"> </span><span class="err">on</span><span class="w">
+                            </span><span class="err">]</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="err">..</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">so</span><span class="w"> </span><span class="err">on</span><span class="w">
+                            </span><span class="p">],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="err">..</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">so</span><span class="w"> </span><span class="err">on</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"component"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"functionGroup"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"functionGroupName"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="err">..</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">so</span><span class="w"> </span><span class="err">on</span><span class="w">
+                            </span><span class="p">],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="err">..</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">so</span><span class="w"> </span><span class="err">on</span><span class="w">
+                            </span><span class="p">],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="p">,</span><span class="w">
+                            </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="err">..</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">so</span><span class="w"> </span><span class="err">on</span><span class="w">
+                            </span><span class="err">]</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="err">..</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">so</span><span class="w"> </span><span class="err">on</span><span class="w">
+                            </span><span class="p">],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;string&gt;</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="err">..</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">so</span><span class="w"> </span><span class="err">on</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON Response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"productDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"upc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dir9259"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"brand"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dirtdonthurt"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"productName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Charcoal Tooth Powder"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"specialtyText"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sku"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xxx"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"charcoal-tooth-powder-hair-gel-cream"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"productAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fair trade"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fragrance-free"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gluten-free"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vegan"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cruelty-free"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"productIngredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"component"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Charcoal Tooth Powder"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"functionGroup"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"functionGroupName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Complex"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kaolin clay"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a Retailer Note"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mineral derived"</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wild harvested"</span><span class="w">
+                                </span><span class="p">}</span><span class="w">
+                            </span><span class="p">],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"functionGroupName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Inactive Ingredients"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calcium carbonate"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mineral derived"</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Non-nano"</span><span class="w">
+                                </span><span class="p">}</span><span class="w">
+                            </span><span class="p">],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abrasive"</span><span class="w">
+                                </span><span class="p">},</span><span class="w">
+                                </span><span class="p">{</span><span class="w">
+                                    </span><span class="nl">"attribute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Absorbant"</span><span class="w">
+                                </span><span class="p">}</span><span class="w">
+                            </span><span class="p">],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coconut activated charcoal"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clove"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calcium bentonite clay"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diatomaceous earth"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"turmeric"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myrrh gum powder"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sage"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sodium bicarbonate"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"component"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Essential Oil Blend"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"functionGroup"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"functionGroupName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Proprietary Blend"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peppermint"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wintergreen"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"ingredientName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"spearmint"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"ingredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"cfmIngredientAttributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+                            </span><span class="nl">"retailerNote"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Get all details in orderwise for a product, given its UPC or SKU.</p>
+<h3 id='http-request-2'>HTTP Request</h3><h4 id='identify-product-by-sku-2'>Identify product by SKU</h4>
+<p><code>GET https://server.clearforme.com/api/app/products/details?sku=[xxx]&amp;clientname=[xxx]</code></p>
+<h4 id='identify-product-by-upc-2'>Identify product by UPC</h4>
+<p><code>GET https://server.clearforme.com/api/app/products/details?upc=[xxx]&amp;clientname=[xxx]</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
 <tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<th>Type</th>
+<th>Authorisation Header</th>
+<th>Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>HEAD</td>
+<td>authToken</td>
+<td>string</td>
 </tr>
 </tbody></table>
 
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Parameter</th>
+<th>Values</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GET</td>
+<td>sku</td>
+<td>string</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>upc</td>
+<td>string</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>clientname</td>
+<td>string</td>
+</tr>
+</tbody></table>
+<h3 id='data-descriptions-2'>Data descriptions</h3><h4 id='upc'>upc</h4>
+<p>UPC of product requested.</p>
+<h4 id='sku'>sku</h4>
+<p>SKU of product requested.</p>
+<h4 id='brand'>brand</h4>
+<p>Brand name of product requested.</p>
+<h4 id='productname'>productName</h4>
+<p>Name of product requested.</p>
+<h4 id='specialtytext'>specialtyText</h4>
+<p>Long string. It contains details such as footer notes that can be displayed at the end of an ingredient widget.
+It may contain HTML formatting.</p>
+<h4 id='handle'>handle</h4>
+<p>Handle of product requested. “n/a” if not provided.</p>
+<h4 id='productattributes-group'>ProductAttributes (group)</h4>
+<p>A list of attributes pertaining to the product, such as:</p>
+
+<ul>
+<li>Contains tree nuts</li>
+<li>Cruelty-free</li>
+<li>Fair trade</li>
+<li>Fragrance-free</li>
+<li>Gluten-free</li>
+<li>IFRA standards compliant</li>
+<li>Non-comedogenic</li>
+<li>Vegan</li>
+</ul>
+<h4 id='productattributes-group-2'>ProductAttributes (group)</h4>
+<p>The ingredients to be listed in order. 
+Ingredients are provided in a hierarchy to provide the optimal flexibility to display ingredients to customers.</p>
+
+<ul>
+<li>Component
+
+<ul>
+<li>Function Group
+
+<ul>
+<li>Ingredients
+
+<ul>
+<li>IngredientName</li>
+<li>IngredientAttributes</li>
+<li>CFMIngredientAttributes</li>
+<li>Retailer Note</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+<h4 id='component-group'>Component (group)</h4>
+<p>Each product can be grouped into one or more components.
+Components exist to allow for organization of multiple sets of ingredients within a product (think of make-up palettes or sample sets).</p>
+<h4 id='function-group-group'>Function Group (group)</h4>
+<p>Ingredients are grouped into seven sections called Function Groups. Function Groups can be empty if not applicable.
+The seven function groups are:</p>
+
+<ul>
+<li>Active Ingredients</li>
+<li>Inactive Ingredients (Default)</li>
+<li>Disclosed Fragrance</li>
+<li>Proprietary Blend</li>
+<li>Complex</li>
+<li>Tool</li>
+<li>May Contain</li>
+</ul>
+<h4 id='ingredientattributes-group'>IngredientAttributes (group)</h4>
+<p>Within each Function Group are the Ingredients set and their attributes.</p>
+
+<ul>
+<li>Ingredient Name</li>
+<li>IngredientAttributes</li>
+<li>CFMIngredientAttributes</li>
+<li>Retailer Note</li>
+</ul>
+<h4 id='ingredient-name'>Ingredient Name</h4>
+<p>The Ingredient Name</p>
+<h4 id='ingredientattributes'>IngredientAttributes</h4>
+<p>A list of attributes pertaining to that specific ingredient. Can be of the following:</p>
+
+<ul>
+<li>Biodynamic</li>
+<li>Constituents Of 100% essential oils</li>
+<li>Essential oils</li>
+<li>Mineral derived</li>
+<li>Natural based preservative</li>
+<li>Naturally derived fragrance</li>
+<li>Non-GMO</li>
+<li>Non-nano</li>
+<li>Organic</li>
+<li>Plant derived</li>
+<li>Proprietary blend or complex</li>
+<li>Synthetic</li>
+<li>Wild crafted</li>
+<li>Wild harvested</li>
+<li>Natural fragrance</li>
+</ul>
+<h4 id='cfm-ingredientattributes'>CFM IngredientAttributes</h4>
+<p>A list of attributes pertaining to that specific ingredient. Can be of the following:</p>
+
+<ul>
+<li>Abrasive</li>
+<li>Absorbent</li>
+<li>Anticaking</li>
+<li>Antifungal</li>
+<li>Antimicrobial</li>
+<li>Antioxidant</li>
+<li>Astringent</li>
+<li>Binding</li>
+<li>Buffer agent</li>
+<li>Bulking</li>
+<li>Chelating agent</li>
+<li>Colorant</li>
+<li>Deodorant agent</li>
+<li>Emulsion stabilizer</li>
+<li>Film former</li>
+<li>Flavoring agent</li>
+<li>Fragrance </li>
+<li>Hair colorant</li>
+<li>Hair conditioning</li>
+<li>Hair fixative </li>
+<li>Humectant</li>
+<li>Lytic agent</li>
+<li>Opacifying agent</li>
+<li>Oral care agent</li>
+<li>PH adjusters</li>
+<li>Preservatives</li>
+<li>Skin protectant</li>
+<li>Skin conditioning</li>
+<li>Slip Modifier</li>
+<li>Solvent</li>
+<li>Surfactant</li>
+<li>Viscosity agent</li>
+</ul>
+<h4 id='retailer-note'>Retailer Note</h4>
+<p>A note stored on CFM system pertaining to that specific ingredient for that specific product. (Available if included in subscribed service)</p>
+<h3 id='error-responses-2'>Error Responses</h3>
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Response</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td><code>{&quot;error&quot;:&quot;No token was provided.&quot;}</code></td>
+</tr>
+<tr>
+<td>403</td>
+<td><code>{&quot;error&quot;:&quot;Failed to authenticate token.&quot;}</code></td>
+</tr>
+<tr>
+<td>404</td>
+<td><code>{&quot;error&quot;:&quot;product not found.&quot;}</code></td>
+</tr>
+<tr>
+<td>500</td>
+<td><code>{&quot;error&quot;:&quot;Internal Server Error.&quot;}</code></td>
+</tr>
+</tbody></table>
+<h1 id='best-practices'>Best Practices</h1><h2 id='displaying-ingredients'>Displaying Ingredients</h2>
+<p>ClearForMe’s Ingredient List is very organized to give you complete control in displaying product ingredients in a way that empowers the customer to make decisions confidently.</p>
+
+<p>There are various ways you can display the information, such as:</p>
+<h3 id='simple'>Simple</h3>
+<p>Display the ingredients in a simplistic short fashion.</p>
+
+<p><img src="images/ingredients-1-890926a5.png" alt="" /></p>
+<h3 id='sectioned'>Sectioned</h3>
+<p>Highlight specific sections to call out ingredients, such as Active Ingredients or Fragrance Ingredients</p>
+
+<p><img src="images/ingredients-2-7fd9ffbd.png" alt="" /></p>
+<h3 id='component'>Component</h3>
+<p>Organize ingredient lists separately, so that products like Makeup Palettes with multiple shades can display each ingredient list separately if different.</p>
+
+<p><img src="images/ingredients-3-5b2b6ab2.png" alt="" /></p>
+
+<p>We recommend setting up your Ingredient List template to display in the below format</p>
+
+<p><img src="images/ingredient-list-a-719418d4.png" alt="" /></p>
+
+<p><img src="images/images/ingredient-list-b.png" alt="" /></p>
+<h2 id='displaying-attributes'>Displaying Attributes</h2>
+<p>When Product Details are requested for a SKU/UPC, a list of attributes are provided as part of the details. We recommend displaying it in the following fashion:</p>
+<h3 id='product-attributes'>Product Attributes</h3>
+<p>Create a space in your Ingredients section to display Product Attributes. These attributes describe the product, so a customer can easily tell that the product is, for example, vegan or gluten free.</p>
+
+<p><img src="images/product-attributes-1-5ae73aa5.png" alt="" /></p>
+<h3 id='ingredient-attributes-cfmi-attributes-and-retailer-notes'>Ingredient Attributes, CFMI Attributes and Retailer Notes</h3>
+<p>When displaying the definitions of an ingredient, you may also want to display the attributes of that ingredient, such as whether it is organic, used as a solvent,  as well as any additional Retailer Notes you may wish to display regarding that ingredient for that product. </p>
+
+<p>Create a space in your Definitions of Ingredients section to display those ingredient attributes, such as below image.</p>
+
+<p><img src="images/product-attributes-2-ce992e8f.png" alt="" /></p>
+<h2 id='error-handling'>Error Handling</h2>
+<p>When using APIs, it is possible that errors may occur. We recommend the below error handling practices to ensure a positive user experience when these errors are encountered.</p>
+<h3 id='ingredient-not-found'>Ingredient Not Found</h3>
+<p>This occurs when the Ingredient requested is not found on our ClearForMe database. This could happen for a number of reasons, such as a typo in the request (the search requires an exact match).</p>
+
+<p>In this event, we recommend displaying a general user-friendly message, such as:
+“Ingredient’s definition was not found.”</p>
+<h3 id='internal-server-error'>Internal Server Error</h3>
+<p>In the rare chance that there is a server error, this message may be returned. In this event, we recommend displaying a general user-friendly message, such as:</p>
+
+<p>“Oops! Something went wrong. Please try again later.”</p>
+
+<p>Alternatively, you can hide the Ingredient Section if the result yields an error.</p>
+<h3 id='product-not-found'>Product Not Found</h3>
+<p>This occurs when the product requested is not found on our ClearForMe database. This most likely occurs when the SKU or UPC requested did not result in a match on the ClearForMe database, either due to an error or because we have not yet added the product to our database yet.</p>
+
+<p>In this event, we recommend displaying a general user-friendly message, such as:</p>
+
+<p>“We are working on getting you the ingredient list. In the meantime, please contact us with any product inquiries you may have.”</p>
+
+<p>Alternatively, you can hide the Ingredient Section if the result yields an error.</p>
+<h3 id='clearforme-will-add-more-information-shortly'>ClearForMe will add more information shortly</h3>
+<p>When we encounter new ingredient terms, it may take some time to research and provide a definition for the new ingredient encountered. In that event, this message will be provided when a definition is requested for the new term.</p>
+<h3 id='other-error-messages-or-if-api-takes-over-5-seconds-to-load-and-render'>Other error messages or if API takes over 5 seconds to load and render</h3>
+<p>We have designed our APIs and service to ensure optimal load time for ecommerce websites. Occasionally, the response time may take a long time for an unforeseen reason. To prevent the page from being in continual loading mode, we recommend inserting a time-limit of 5 to 7 seconds. After the threshold, a general user-friendly message can be displayed, such as:
+“We are experiencing a delay. To see information in this section, please reload the page or try again later.”</p>
+
+<p>Alternatively, you can hide the Ingredient Section if the result yields an error.</p>
+<h1 id='sample-developer-code'>Sample Developer Code</h1>
+<blockquote>
+<p>React</p>
+</blockquote>
+<div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FaRegTimesCircle</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-icons/fa</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @description This is an example source code of how to generate the UI for preview ingredients section.
+ * @param {Array&lt;Object&gt;} ingredientsData - product ingredient details.
+ * @param {String} clientName - registered client name.
+ */</span>
+<span class="kd">const</span> <span class="nx">PreviewIngredients</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">ingredientsData</span><span class="p">,</span> <span class="nx">clientName</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">previewBlockRef</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useRef</span><span class="p">();</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">ingredientDetails</span><span class="p">,</span> <span class="nx">setIngredientsDetails</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">ingredientClicked</span><span class="p">,</span> <span class="nx">setIngedientClicked</span><span class="p">]</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">useState</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+ <span class="cm">/**
+   * @description populate ingredient details to render after an ingredient is clicked.
+   * @param {Object} ingredient - clicked ingredient details.
+   */</span>
+  <span class="kd">const</span> <span class="nx">handleIngredientClick</span> <span class="o">=</span> <span class="p">(</span><span class="nx">ingredient</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">ingredient</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+
+    <span class="c1">//Check if the ingredient object has definition if not fetch it from the API endpoint.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="dl">'</span><span class="s1">definition</span><span class="dl">'</span> <span class="k">in</span> <span class="nx">ingredient</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">...</span><span class="nx">ingredient</span><span class="p">,</span>
+        <span class="na">productIngredientAttributes</span><span class="p">:</span> <span class="nx">ingredient</span><span class="p">.</span><span class="nx">attributes</span> <span class="o">||</span> <span class="p">[],</span>
+      <span class="p">};</span>
+      <span class="k">return</span> <span class="nx">setIngedientClicked</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">fetchSingleIngredientDetails</span><span class="p">(</span><span class="nx">ingredient</span><span class="p">.</span><span class="nx">_id</span><span class="p">,</span> <span class="nx">activeIndex</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+
+ <span class="cm">/**
+   * @description Service call to fetch an ingredient details when there is no definition/details available.
+   * @param {String} ingredientId
+   * API END POINT - https://server.clearforme.com/api/cms/productIngredients/{ingredientId}?clientName={registeredClientName}
+   * API Request Method - GET
+   */</span>
+  <span class="kd">const</span> <span class="nx">fetchSingleIngredientDetails</span> <span class="o">=</span> <span class="k">async</span> <span class="p">(</span><span class="nx">ingredientId</span><span class="p">,</span> <span class="nx">activeIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">API_ENDPOINT</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">)</span> <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">ingredientObj</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">_id</span><span class="p">:</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">ingredientId</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">:</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">ingredientName</span><span class="p">,</span>
+      <span class="p">...</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span>
+      <span class="p">...(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">cfmIngredient</span>
+        <span class="p">?</span> <span class="p">{</span>
+            <span class="p">...</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">cfmIngredient</span><span class="p">,</span>
+          <span class="p">}</span>
+        <span class="p">:</span> <span class="p">{}),</span>
+    <span class="p">};</span>
+    <span class="k">return</span> <span class="nx">setIngedientClicked</span><span class="p">(</span><span class="nx">ingredientObj</span><span class="p">);</span>
+  <span class="p">};</span>
+
+ <span class="cm">/**
+   * @description clear selected ingredient details from state
+   */</span>
+  <span class="kd">const</span> <span class="nx">removeClickedIngredient</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">setIngedientClicked</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+ <span class="cm">/**
+   * @description handle component mounting behaviour
+   */</span>
+  <span class="nx">React</span><span class="p">.</span><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">previewBlockRef</span><span class="p">.</span><span class="nx">current</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">previewBlockRef</span><span class="p">.</span><span class="nx">current</span><span class="p">.</span><span class="nx">scrollIntoView</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">},</span> <span class="p">[]);</span>
+
+ <span class="cm">/**
+   * @description handle component updating behaviour
+   */</span>
+  <span class="nx">React</span><span class="p">.</span><span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setIngredientsDetails</span><span class="p">(</span><span class="nx">ingredientsData</span><span class="p">);</span>
+  <span class="p">},</span> <span class="p">[</span><span class="nx">ingredientsData</span><span class="p">]);</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">ref</span><span class="p">=</span><span class="si">{</span><span class="nx">previewBlockRef</span><span class="si">}</span> <span class="na">className</span><span class="p">=</span><span class="s">'preview-ingredients'</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">'preview-title'</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>All ingredients<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>* click an ingredient for more info<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+      <span class="si">{</span>
+        <span class="nx">ingredientDetails</span> <span class="o">&amp;&amp;</span> 
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+          <span class="si">{</span><span class="nx">ingredientDetails</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">functionGroupData</span><span class="p">,</span> <span class="nx">parentIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+            <span class="c1">// component details</span>
+            <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">parentIndex</span><span class="si">}</span> <span class="na">className</span><span class="p">=</span><span class="s">'component'</span><span class="p">&gt;</span>
+              <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">'component-title inline-data'</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Component:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">functionGroupData</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+              <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+              <span class="si">{</span><span class="cm">/* function group details */</span><span class="si">}</span>
+              <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">className</span><span class="p">=</span><span class="s">'function-group'</span><span class="p">&gt;</span>
+                <span class="si">{</span><span class="nx">functionGroupData</span><span class="p">.</span><span class="nx">children</span> <span class="o">&amp;&amp;</span>
+                  <span class="nx">functionGroupData</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span>
+                    <span class="p">(</span><span class="nx">functionGroupItem</span><span class="p">,</span> <span class="nx">functionIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                      <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">functionIndex</span><span class="si">}</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">'function-group-title inline-data'</span><span class="p">&gt;</span>
+                          <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Function Group:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                          <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">functionGroupItem</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+                        <span class="si">{</span><span class="cm">/* product ingredient details */</span><span class="si">}</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">'product-ingredients inline-data'</span><span class="p">&gt;</span>
+                          <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Ingredients:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                          <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">className</span><span class="p">=</span><span class="s">'ingredients-list'</span><span class="p">&gt;</span>
+                            <span class="si">{</span><span class="nx">functionGroupItem</span><span class="p">.</span><span class="nx">children</span> <span class="o">&amp;&amp;</span>
+                              <span class="nx">functionGroupItem</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span>
+                                <span class="p">(</span><span class="nx">ingredientItem</span><span class="p">,</span> <span class="nx">childIndex</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                                  <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">childIndex</span><span class="si">}</span><span class="p">&gt;</span>
+                                    <span class="p">&lt;</span><span class="nt">span</span>
+                                      <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">handleIngredientClick</span><span class="p">(</span><span class="nx">ingredientItem</span><span class="p">,</span> <span class="nx">ingredientItem</span><span class="p">.</span><span class="nx">previewId</span><span class="p">)</span><span class="si">}</span>
+                                      <span class="na">title</span><span class="p">=</span><span class="si">{</span><span class="nx">ingredientItem</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span>
+                                      <span class="na">className</span><span class="p">=</span><span class="si">{</span><span class="nx">ingredientClicked</span> <span class="o">&amp;&amp;</span> <span class="nx">ingredientClicked</span><span class="p">.</span><span class="nx">_id</span> <span class="o">===</span> <span class="nx">ingredientItem</span><span class="p">.</span><span class="nx">_id</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">active</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">''</span><span class="si">}</span>
+                                    <span class="p">&gt;</span>
+                                      <span class="si">{</span><span class="nx">ingredientItem</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span>
+                                    <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                                    <span class="si">{</span><span class="nx">ingredientClicked</span> <span class="o">&amp;&amp;</span> <span class="nx">ingredientClicked</span><span class="p">.</span><span class="nx">_id</span> <span class="o">===</span> <span class="nx">ingredientItem</span><span class="p">.</span><span class="nx">_id</span> <span class="p">?</span> <span class="p">(</span>
+                                      <span class="p">&lt;</span><span class="nc">SelectedIngredient</span>
+                                        <span class="na">ingredientDetails</span><span class="p">=</span><span class="si">{</span><span class="nx">ingredientClicked</span><span class="si">}</span>
+                                        <span class="na">removeSelectedIngredient</span><span class="p">=</span><span class="si">{</span><span class="nx">removeClickedIngredient</span><span class="si">}</span>
+                                      <span class="p">/&gt;</span>
+                                    <span class="p">)</span> <span class="p">:</span> <span class="kc">null</span><span class="si">}</span>
+                                  <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                                <span class="p">)</span>
+                              <span class="p">)</span><span class="si">}</span>
+                          <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+                        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                      <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                    <span class="p">)</span>
+                  <span class="p">)</span><span class="si">}</span>
+              <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+          <span class="p">))</span><span class="si">}</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+      <span class="si">}</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">PreviewIngredients</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @description render Selected/Clicked ingredient details
+ * @param {Object} ingredientData - clicked ingredient details
+ * @param {Function} removeSelectedIngredient - removed selected ingredient state.
+ */</span>
+<span class="kd">const</span> <span class="nx">SelectedIngredient</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">ingredientData</span><span class="p">,</span> <span class="nx">removeSelectedIngredient</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">'clicked-ingredient-details'</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">'top-details'</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h5</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">ingredientData</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nc">FaRegTimesCircle</span> <span class="na">onClick</span><span class="p">=</span><span class="si">{</span><span class="nx">removeSelectedIngredient</span><span class="si">}</span> <span class="na">className</span><span class="p">=</span><span class="s">'close-preview-ingredient'</span> <span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">'bottom-details'</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">'definition inline-data'</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Definition:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">ingredientData</span><span class="p">.</span><span class="nx">definition</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">'ingredient-attributes inline-data'</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Product Ingredient Attributes:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+            <span class="si">{</span><span class="nx">ingredientData</span><span class="p">.</span><span class="nx">productIngredientAttributes</span>
+              <span class="p">.</span><span class="nx">filter</span><span class="p">(({</span> <span class="nx">isActive</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="nx">isActive</span><span class="p">)</span>
+              <span class="p">.</span><span class="nx">map</span><span class="p">(({</span> <span class="nx">attribute</span><span class="p">,</span> <span class="nx">_id</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">_id</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">attribute</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+              <span class="p">))</span><span class="si">}</span>
+          <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">'cfm-ingredient-attributes inline-data'</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>CFM Ingredient Attributes:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+            <span class="si">{</span><span class="nx">ingredientData</span><span class="p">.</span><span class="nx">cfmIngredientAttributes</span>
+              <span class="p">.</span><span class="nx">filter</span><span class="p">(({</span> <span class="nx">isActive</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="nx">isActive</span><span class="p">)</span>
+              <span class="p">.</span><span class="nx">map</span><span class="p">(({</span> <span class="nx">attribute</span><span class="p">,</span> <span class="nx">_id</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">_id</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">attribute</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+              <span class="p">))</span><span class="si">}</span>
+          <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+        <span class="si">{</span><span class="nx">ingredientData</span><span class="p">.</span><span class="nx">synonyms</span><span class="p">.</span><span class="nx">length</span> <span class="p">?</span> <span class="p">(</span>
+          <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">'synonyms inline-data'</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Synonyms:<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+              <span class="si">{</span><span class="nx">ingredientData</span><span class="p">.</span><span class="nx">synonyms</span><span class="p">.</span><span class="nx">map</span><span class="p">(({</span> <span class="nx">synonym</span><span class="p">,</span> <span class="nx">_id</span> <span class="p">},</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+                <span class="p">&lt;</span><span class="nt">li</span> <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">_id</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">synonym</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+              <span class="p">))</span><span class="si">}</span>
+            <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+          <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">)</span> <span class="p">:</span> <span class="kc">null</span><span class="si">}</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>As a guideline to support web developers, below is an example of how the API response can be rendered to display on your website. We recommend using this sample for guidance and reference purposes only and tested against various types of products in your store. Once a framework is agreed upon by your team, design and styling elements can be introduced.</p>
+
+<ul>
+<li><strong>Sample Product:</strong> Charcoal Tooth Powder
+
+<ul>
+<li><strong>Ingredients:</strong>
+
+<ul>
+<li>Calcium Bentonite Clay, Coconut Activated Charcoal, Calcium Carbonate, Kaolin Clay, Diatomaceous Earth, Sodium Bicarbonate, Myrrh Gum Powder, Clove, Sage, Turmeric</li>
+<li><strong>Proprietary Blend:</strong> Peppermint, Spearmint, Wintergreen</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p><img src="images/sample-4dc48246.png" alt="" /></p>
+
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
-          </div>
       </div>
     </div>
   </body>
