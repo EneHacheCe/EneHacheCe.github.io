@@ -279,7 +279,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-13f24c39.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-de91a010.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-e9bde216.js"></script>
 
@@ -928,6 +928,133 @@ The seven function groups are:</p>
 </ul>
 <h4 id='retailer-note'>Retailer Note</h4>
 <p>A note stored on CFM system pertaining to that specific ingredient for that specific product. (Available if included in subscribed service)</p>
+<h3 id='making-sense-of-the-data'>Making Sense of the Data</h3>
+<p>Explaining the sample JSON response.</p>
+<h4 id='product-details'>Product Details</h4>
+<p>Details that pertain to the product (SKU)</p>
+
+<table>
+  <tr class="custom-code">
+    <td class="custom-code">
+        "upc": "dir9259", </br>
+        "brand": "dirtdonthurt", </br>
+        "productName": "Charcoal Tooth Powder", </br>
+        "specialtyText": "", </br>
+        "sku": "xxx",</br>
+        "handle": "charcoal-tooth-powder-hair-gel-cream"
+    </td>
+  </tr>
+</table>
+<h4 id='product-attributes'>Product Attributes</h4>
+<p>Attributes that apply to the product (SKU)</p>
+
+<table>
+  <tr class="custom-code">
+    <td class="custom-code">
+      "productAttributes": [</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Fair trade"</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Fragrance-free"</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Gluten-free"</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Vegan"</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Cruelty-free"</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}</br>
+      ]</br>
+    </td>
+  </tr>
+</table>
+<h4 id='product-ingredients'>Product Ingredients</h4>
+<p>Detailed information of the product’s (SKU) ingredients
+<table>
+  <tr>
+    <th>Component</th>
+    <th>Function Group</th>
+    <th>Ingredient</th>
+    <th>Ingredient Details</th>
+  </tr>
+  <tr>
+    <td class="custom-code">
+    &quot;component&quot;: &quot;Charcoal Tooth Powder&quot;
+    </td>
+    <td class="custom-code">
+    &quot;functionGroupName&quot;: &quot;Complex&quot;
+    </td>
+    <td class="custom-code">
+    &quot;ingredientName&quot;: &quot;kaolin clay&quot;
+    </td>
+    <td class="custom-code">
+    &quot;ingredientAttributes&quot;: [],</br>
+    &quot;cfmIngredientAttributes&quot;: [],</br>
+    &quot;retailerNote&quot;: &quot;This is a sample retailer note.&quot;
+    </td>
+  </tr>
+  <tr>
+    <td class="custom-code"></td>
+    <td class="custom-code">
+    &quot;functionGroupName&quot;: &quot;Inactive Ingredients&quot;
+    </td>
+    <td class="custom-code">
+    &quot;ingredientName&quot;: &quot;calcium carbonate&quot;
+    </td>
+    <td class="custom-code">
+    &quot;ingredientAttributes:</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;attribute&quot;: &quot;Mineral derived&quot;</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;attribute&quot;: &quot;Non-nano&quot;</br>
+&quot;cfmIngredientAttributes&quot;: </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;attribute&quot;: &quot;Abrasive&quot;</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&quot;attribute&quot;: &quot;Absorbant&quot;</br>
+&quot;retailerNote&quot;: &quot;&quot;
+    </td>
+  </tr>
+  <tr>
+    <td class="custom-code"></td>
+    <td class="custom-code"></td>
+    <td class="custom-code">&quot;ingredientName&quot;: &quot;coconut activated charcoal&quot;</td>
+    <td class="custom-code">&quot;ingredientAttributes&quot;: [],</br>
+    &quot;cfmIngredientAttributes&quot;: [],</br>
+    &quot;retailerNote&quot;: &quot;&quot;</br></td>
+  </tr>
+  <tr>
+    <td class="custom-code"></td>
+    <td class="custom-code"></td>
+    <td class="custom-code">&quot;ingredientName&quot;: &quot;turmeric&quot;</td>
+    <td class="custom-code">&quot;ingredientAttributes&quot;: [],</br>
+    &quot;cfmIngredientAttributes&quot;: [],</br>
+    &quot;retailerNote&quot;: &quot;&quot;</br></td>
+  </tr>
+  <tr>
+    <td class="custom-code"> &quot;component&quot;: &quot;Essential Oil Blend&quot;</td>
+    <td class="custom-code">&quot;functionGroupName&quot;: &quot;Proprietary Blend&quot;</td>
+    <td class="custom-code">&quot;ingredientName&quot;: &quot;wintergreen&quot;</td>
+    <td class="custom-code">&quot;ingredientAttributes&quot;: [],</br>
+    &quot;cfmIngredientAttributes&quot;: [],</br>
+    &quot;retailerNote&quot;: &quot;&quot;</br></td>
+  </tr>
+  <tr>
+    <td class="custom-code"></td>
+    <td class="custom-code"></td>
+    <td class="custom-code">&quot;ingredientName&quot;: &quot;spearmint&quot;</td>
+    <td class="custom-code">&quot;ingredientAttributes&quot;: [],</br>
+    &quot;cfmIngredientAttributes&quot;: [],</br>
+    &quot;retailerNote&quot;: &quot;&quot;</br></td>
+  </tr>
+  <tr>
+    <td class="custom-code"></td>
+    <td class="custom-code"></td>
+    <td class="custom-code">&quot;ingredientName&quot;: &quot;peppermint&quot;</td>
+    <td class="custom-code">&quot;ingredientAttributes&quot;: [],</br>
+    &quot;cfmIngredientAttributes&quot;: [],</br>
+    &quot;retailerNote&quot;: &quot;&quot;</br></td>
+  </tr>
+</table></p>
 <h3 id='error-responses-2'>Error Responses</h3>
 <table><thead>
 <tr>
@@ -971,12 +1098,12 @@ The seven function groups are:</p>
 
 <p>We recommend setting up your Ingredient List template to display in the below format</p>
 
-<p><img src="images/ingredient-list-a-719418d4.png" alt="" /></p>
+<p><img src="images/ingredient-list-a-f81c5f80.png" alt="" /></p>
 
-<p><img src="images/ingredient-list-b-1612aef8.png" alt="" /></p>
+<p><img src="images/ingredient-list-b-31777471.png" alt="" /></p>
 <h2 id='displaying-attributes'>Displaying Attributes</h2>
 <p>When Product Details are requested for a SKU/UPC, a list of attributes are provided as part of the details. We recommend displaying it in the following fashion:</p>
-<h3 id='product-attributes'>Product Attributes</h3>
+<h3 id='product-attributes-2'>Product Attributes</h3>
 <p>Create a space in your Ingredients section to display Product Attributes. These attributes describe the product, so a customer can easily tell that the product is, for example, vegan or gluten free.</p>
 
 <p><img src="images/product-attributes-1-5ae73aa5.png" alt="" /></p>
@@ -1217,7 +1344,7 @@ The seven function groups are:</p>
   <span class="p">);</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>As a guideline to support web developers, below is an example of how the API response can be rendered to display on your website. We recommend using this sample for guidance and reference purposes only and tested against various types of products in your store. Once a framework is agreed upon by your team, design and styling elements can be introduced.</p>
+<p>As a guideline to support web developers, here is an example of how the API response can be rendered to display on your website. We recommend using this sample for guidance and reference purposes only and tested against various types of products in your store. Once a framework is agreed upon by your team, design and styling elements can be introduced.</p>
 
 <ul>
 <li><strong>Sample Product:</strong> Charcoal Tooth Powder
