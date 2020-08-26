@@ -535,6 +535,136 @@ A list of attributes pertaining to that specific ingredient. Can be of the follo
 ####Retailer Note
 A note stored on CFM system pertaining to that specific ingredient for that specific product. (Available if included in subscribed service)
 
+###Making Sense of the Data
+Explaining the sample JSON response.
+
+####Product Details
+Details that pertain to the product (SKU)
+
+<table>
+  <tr class="custom-code">
+    <td class="custom-code">
+        "upc": "dir9259", </br>
+        "brand": "dirtdonthurt", </br>
+        "productName": "Charcoal Tooth Powder", </br>
+        "specialtyText": "", </br>
+        "sku": "xxx",</br>
+        "handle": "charcoal-tooth-powder-hair-gel-cream"
+    </td>
+  </tr>
+</table>
+
+####Product Attributes
+Attributes that apply to the product (SKU)
+
+<table>
+  <tr class="custom-code">
+    <td class="custom-code">
+      "productAttributes": [</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Fair trade"</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Fragrance-free"</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Gluten-free"</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Vegan"</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Cruelty-free"</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}</br>
+      ]</br>
+    </td>
+  </tr>
+</table>
+
+####Product Ingredients
+Detailed information of the product’s (SKU) ingredients
+<table>
+  <tr>
+    <th>Component</th>
+    <th>Function Group</th>
+    <th>Ingredient</th>
+    <th>Ingredient Details</th>
+  </tr>
+  <tr>
+    <td class="custom-code">
+    "component": "Charcoal Tooth Powder"
+    </td>
+    <td class="custom-code">
+    "functionGroupName": "Complex"
+    </td>
+    <td class="custom-code">
+    "ingredientName": "kaolin clay"
+    </td>
+    <td class="custom-code">
+    "ingredientAttributes": [],</br>
+    "cfmIngredientAttributes": [],</br>
+    "retailerNote": "This is a sample retailer note."
+    </td>
+  </tr>
+  <tr>
+    <td class="custom-code"></td>
+    <td class="custom-code">
+    "functionGroupName": "Inactive Ingredients"
+    </td>
+    <td class="custom-code">
+    "ingredientName": "calcium carbonate"
+    </td>
+    <td class="custom-code">
+    "ingredientAttributes:</br>
+&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Mineral derived"</br>
+&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Non-nano"</br>
+"cfmIngredientAttributes": </br>
+&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Abrasive"</br>
+&nbsp;&nbsp;&nbsp;&nbsp;"attribute": "Absorbant"</br>
+"retailerNote": ""
+    </td>
+  </tr>
+  <tr>
+    <td class="custom-code"></td>
+    <td class="custom-code"></td>
+    <td class="custom-code">"ingredientName": "coconut activated charcoal"</td>
+    <td class="custom-code">"ingredientAttributes": [],</br>
+    "cfmIngredientAttributes": [],</br>
+    "retailerNote": ""</br></td>
+  </tr>
+  <tr>
+    <td class="custom-code"></td>
+    <td class="custom-code"></td>
+    <td class="custom-code">"ingredientName": "turmeric"</td>
+    <td class="custom-code">"ingredientAttributes": [],</br>
+    "cfmIngredientAttributes": [],</br>
+    "retailerNote": ""</br></td>
+  </tr>
+  <tr>
+    <td class="custom-code"> "component": "Essential Oil Blend"</td>
+    <td class="custom-code">"functionGroupName": "Proprietary Blend"</td>
+    <td class="custom-code">"ingredientName": "wintergreen"</td>
+    <td class="custom-code">"ingredientAttributes": [],</br>
+    "cfmIngredientAttributes": [],</br>
+    "retailerNote": ""</br></td>
+  </tr>
+  <tr>
+    <td class="custom-code"></td>
+    <td class="custom-code"></td>
+    <td class="custom-code">"ingredientName": "spearmint"</td>
+    <td class="custom-code">"ingredientAttributes": [],</br>
+    "cfmIngredientAttributes": [],</br>
+    "retailerNote": ""</br></td>
+  </tr>
+  <tr>
+    <td class="custom-code"></td>
+    <td class="custom-code"></td>
+    <td class="custom-code">"ingredientName": "peppermint"</td>
+    <td class="custom-code">"ingredientAttributes": [],</br>
+    "cfmIngredientAttributes": [],</br>
+    "retailerNote": ""</br></td>
+  </tr>
+</table>
 ### Error Responses
 
 Status | Response
@@ -828,7 +958,7 @@ const SelectedIngredient = ({ ingredientData, removeSelectedIngredient }) => {
 };
 ```
 
-As a guideline to support web developers, below is an example of how the API response can be rendered to display on your website. We recommend using this sample for guidance and reference purposes only and tested against various types of products in your store. Once a framework is agreed upon by your team, design and styling elements can be introduced.
+As a guideline to support web developers, here is an example of how the API response can be rendered to display on your website. We recommend using this sample for guidance and reference purposes only and tested against various types of products in your store. Once a framework is agreed upon by your team, design and styling elements can be introduced.
 
 * **Sample Product:** Charcoal Tooth Powder
     * **Ingredients:**

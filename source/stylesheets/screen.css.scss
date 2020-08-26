@@ -635,3 +635,32 @@ html, body {
 .copy-clipboard:hover {
   opacity: 0.8;
 }
+
+//Custom HTML
+.highlight .err {
+  color: #84dbbe;
+}
+
+.copy-clipboard {
+  position: fixed;
+  right: 1em;
+}
+
+td.custom-code {
+  background-color: #1E2224 !important;
+  word-break: break-all;
+  
+  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+  
+  font-size: 12px;
+  
+  line-height: 1.5;
+
+  color: white;
+
+  word-break: initial;
+}
+
+tr.custom-code {
+  border: none !important;
+}
